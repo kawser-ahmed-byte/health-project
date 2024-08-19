@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-
 import {
     FormControl,
     FormDescription,
@@ -65,22 +64,22 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                         />
                     </FormControl>
                 </div>
-            )
+            );
         case FormFieldType.TEXTAREA:
             return(
                 <FormControl>
                     <Textarea
                         placeholder={placeholder}
                         {...field}
-                        className="shad-textarea"
+                        className="shad-textArea"
                         disabled={props.disabled}
                     />
                 </FormControl>
-            )
+            );
         case FormFieldType.PHONE_INPUT:
             return(
                 <FormControl>
-                    <PhoneInput 
+                    <PhoneInput
                         defaultCountry = "US"
                         placeholder = {placeholder}
                         international
@@ -90,7 +89,7 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                         className = "input-phone shad-input border-0"
                     />
                 </FormControl>
-            )
+            );
         case FormFieldType.DATE_PICKER:
             return(
                 <div className="flex rounded-md border border-dark-500 bg-dark-400">
@@ -103,7 +102,7 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                     />
                     <FormControl>
                         <DatePicker selected={field.value} onChange={(date) => field.onChange(date)}
-                                    dateFormat={dateFormat ?? 'MM/dd/yyyy'} 
+                                    dateFormat={dateFormat ?? 'MM/dd/yyyy'}
                                     showTimeSelect={showTimeSelect ?? false}
                                     timeInputLabel="Time:"
                                     wrapperClassName="date-picker"
@@ -111,7 +110,7 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                         />
                     </FormControl>
                 </div>
-            )
+            );
         case FormFieldType.SELECT:
             return(
                 <FormControl>
@@ -126,12 +125,12 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                         </SelectContent>
                     </Select>
                 </FormControl>
-            )
+            );
         case FormFieldType.SKELETON:
             return(
                 renderSkeleton ? renderSkeleton
                 (field) : null
-            )
+            );
         case FormFieldType.CHECKBOX:
             return(
                 <FormControl>
@@ -146,11 +145,11 @@ const RenderField = ({ field, props } : { field : any; props : CustomProps }) =>
                         </Label>
                     </div>
                 </FormControl>
-            )
-            default:
+            );
+        default:
             break;
     }
-}
+};
 
 const CustomFormField = (props: CustomProps) => {
 
@@ -163,7 +162,7 @@ const CustomFormField = (props: CustomProps) => {
             render={({ field }) => (
                 <FormItem className="flex-1">
                     {fieldType !== FormFieldType.CHECKBOX && label && (
-                        <FormLabel>{label}</FormLabel>
+                        <FormLabel className='shad-input-label'>{label}</FormLabel>
                     )}
 
                     <RenderField field={field} props={props} />
